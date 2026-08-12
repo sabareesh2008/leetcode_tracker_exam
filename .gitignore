@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+Thumbs.db
+
+.env.runner
+code-runner/.env
+
+reports/latest_daily_report.html
+reports/latest_weekly_report.html

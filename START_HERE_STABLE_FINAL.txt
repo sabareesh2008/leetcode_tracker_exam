@@ -1,0 +1,94 @@
+STABLE FINAL DAILY CODING TEST
+
+REPLACE THESE FRONTEND FILES:
+- index.html
+- style.css
+- script.js
+
+RUN THIS SQL ONCE:
+- coding_test_repair.sql
+
+REPLACE THESE RUNNER FILES:
+- code-runner/app.py
+- code-runner/Dockerfile
+- code-runner/requirements.txt
+
+WHAT IS FIXED:
+- Simple sequential admin flow:
+  Step 1 Create/Select Test
+  Step 2 Add Question
+  Step 3 Add Test Cases
+- Automatic question numbering prevents duplicate-question 409 errors.
+- Delete Test option.
+- Delete Question option.
+- Delete Test Case option.
+- Publish / Close Test option.
+- Stable Close button.
+- Existing tests/questions/cases always visible.
+- Register-number verification through Supabase RPC.
+- No hardcoded register number.
+- Java 21 Run Code.
+- Compiler errors.
+- Runtime errors.
+- Time limit exceeded.
+- Sample test-case output.
+- Hidden test cases judged by the trusted runner.
+- Draft saving.
+- Timer persistence.
+- Auto-submit.
+- Copy/paste/cut/right-click blocking.
+- Tab/fullscreen violation tracking.
+
+SUPABASE:
+Run coding_test_repair.sql in Supabase SQL Editor once.
+
+DOCKER:
+From code-runner:
+
+docker build -t ece-java-runner .
+
+For local testing, run PowerShell like:
+
+docker run --rm -p 8080:8080 `
+  --memory="768m" `
+  --cpus="1.5" `
+  --pids-limit="128" `
+  -e SUPABASE_URL="https://YOUR_PROJECT.supabase.co" `
+  -e SUPABASE_SERVICE_ROLE_KEY="YOUR_SERVICE_ROLE_KEY" `
+  -e ALLOWED_ORIGINS="http://127.0.0.1:5500,http://localhost:5500" `
+  ece-java-runner
+
+IMPORTANT:
+Never put the Supabase service-role key in config.js or GitHub Pages.
+
+CHECK:
+Open http://localhost:8080/health
+
+Expected:
+{
+  "ok": true,
+  "jdk": "21",
+  "hidden_judge_ready": true
+}
+
+If hidden_judge_ready is false, Run Code can still work,
+but final hidden-case submission will not work until runner secrets are supplied.
+
+TEST ORDER:
+1. Admin -> Manage Coding Tests
+2. Create Test
+3. Add Question
+4. Add Test Cases
+5. Publish
+6. Student -> Daily Coding Test
+7. Enter real register number
+8. Run Code
+9. Create intentional syntax error and verify compiler message
+10. Run Sample Tests
+11. Submit and verify final score
+
+VALIDATION PERFORMED BEFORE ZIP:
+- JavaScript syntax check: PASSED
+- Python runner syntax check: PASSED
+- Actual Java 21 compile/judge test: 2/2 PASSED
+- Test score validation: 10/10

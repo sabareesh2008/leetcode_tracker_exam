@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="ECE LeetCode department leaderboard with section-wise and overall views."
+  >
+  <title>ECE LeetCode Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">ECE CODING PROGRESS</div>
+
+      <h1>
+        ECE
+        <span>LeetCode Leaderboard</span>
+      </h1>
+
+      <p id="heroDescription">
+        Choose a section to view its leaderboard, or open Overall to compare the whole department.
+      </p>
+    </div>
+
+    <div class="hero-side">
+      <div id="currentChampionCard" class="current-champion-card">
+        <div class="current-champion-icon">🏆</div>
+        <div>
+          <span>Current Champion</span>
+          <strong id="currentChampionSection">Waiting...</strong>
+          <small id="currentChampionScore">30-day section leader</small>
+        </div>
+      </div>
+
+      <div id="adminSessionCard" class="session-card" hidden>
+        <div>
+          <span>Administrator</span>
+          <strong id="sessionEmail">—</strong>
+        </div>
+
+        <span class="role-badge role-admin">Admin Mode</span>
+      </div>
+
+      <div class="status-card">
+        <div class="live-dot"></div>
+
+        <div>
+          <span>Last updated</span>
+          <strong id="lastUpdated">Loading...</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- =====================================================
+         SECTION HOME
+         ===================================================== -->
+    <section id="sectionHome" class="section-home">
+      <div class="section-home-head">
+        <div>
+          <div class="eyebrow">SELECT SECTION</div>
+          <h2>ECE Department Leaderboards</h2>
+          <p>
+            Each section has its own rank. Overall compares all ECE sections together.
+          </p>
+        </div>
+
+        <button
+          id="adminLoginButton"
+          class="action-button primary"
+          type="button"
+        >
+          Admin Login
+        </button>
+      </div>
+
+
+
+      <div class="section-grid">
+        <button class="section-card" data-section="ECE A" type="button">
+          <span class="section-card-title">ECE A</span>
+          <strong id="countECEA">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECEA">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECEA">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECEA">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card" data-section="ECE B" type="button">
+          <span class="section-card-title">ECE B</span>
+          <strong id="countECEB">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECEB">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECEB">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECEB">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card" data-section="ECE C" type="button">
+          <span class="section-card-title">ECE C</span>
+          <strong id="countECEC">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECEC">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECEC">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECEC">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card" data-section="ECE D" type="button">
+          <span class="section-card-title">ECE D</span>
+          <strong id="countECED">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECED">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECED">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECED">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card" data-section="ECE E" type="button">
+          <span class="section-card-title">ECE E</span>
+          <strong id="countECEE">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECEE">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECEE">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECEE">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card" data-section="ECE F" type="button">
+          <span class="section-card-title">ECE F</span>
+          <strong id="countECEF">0</strong>
+          <span>Students</span>
+          <div class="section-challenge-mini">
+            <span>🎯 Today <strong id="challengeCompletedECEF">0</strong></span>
+            <span>🔥 On Streak <strong id="challengeBestStreakECEF">0</strong></span>
+            <span>💻 Test Passed <strong id="codingPassedECEF">0/0</strong></span>
+          </div>
+        </button>
+
+        <button class="section-card overall-card" data-section="OVERALL" type="button">
+          <span class="section-card-title">Overall</span>
+          <strong id="countOverall">0</strong>
+          <span>Total Students</span>
+          <div class="section-challenge-mini">
+            <span>💻 Latest Test Passed <strong id="codingPassedOverall">0/0</strong></span>
+          </div>
+        </button>
+
+        <button
+          id="championsCardButton"
+          class="section-card champions-home-card"
+          type="button"
+        >
+          <span class="section-card-title">🏆 Champions</span>
+          <strong>Top Performance</strong>
+          <span>Section Championship + Section Champions + Overall Top 5</span>
+        </button>
+
+        <button
+          id="dailyChallengeCardButton"
+          class="section-card daily-challenge-home-card"
+          type="button"
+        >
+          <span class="section-card-title">🎯 Daily Challenge</span>
+          <strong id="dailyChallengeHomeTitle">Loading...</strong>
+          <span id="dailyChallengeHomeProgress">Checking today's challenge</span>
+        </button>
+      </div>
+
+      
+      <section class="coding-test-home-card">
+        <div>
+          <span class="section-card-title">💻 Daily Coding Test</span>
+          <p id="codingTestHomeStatus">Timed Java assessment with compiler, test cases and automatic scoring.</p>
+        </div>
+        <button id="openCodingTestButton" class="action-button primary" type="button">
+          Open Coding Test
+        </button>
+      </section>
+
+      <div class="home-admin-actions admin-only" hidden>
+        <button id="homeAddProfileButton" class="action-button primary" type="button">
+          + Add Profile
+        </button>
+
+        <button id="homeSyncNowButton" class="action-button secondary" type="button">
+          ↻ Sync Now
+        </button>
+
+        <button id="homeManageStudentsButton" class="action-button secondary" type="button">
+          Manage Students
+        </button>
+
+        <button id="manageCodingTestsButton" class="action-button secondary" type="button">
+          Manage Coding Tests
+        </button>
+        <button id="homeFacultyAnalyticsButton" class="action-button secondary" type="button">
+          Faculty Analytics
+        </button>
+
+        <button id="homePostChallengeButton" class="action-button secondary" type="button">
+          + Post Daily Challenge
+        </button>
+
+        <button id="homeAdminLogoutButton" class="action-button secondary" type="button">
+          Logout
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         LEADERBOARD VIEW
+         ===================================================== -->
+    <section id="leaderboardView" hidden>
+      <section class="leaderboard-topbar">
+        <button id="backToSectionsButton" class="action-button secondary" type="button">
+          ← Sections
+        </button>
+
+        <div class="leaderboard-title-wrap">
+          <div class="eyebrow" id="currentViewLabel">SECTION</div>
+          <h2 id="currentViewTitle">ECE E Leaderboard</h2>
+        </div>
+      </section>
+
+      <section class="control-panel">
+        <div class="search-wrap">
+          <label for="searchInput">Search students</label>
+
+          <div class="search-field">
+            <span aria-hidden="true">⌕</span>
+
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Name, register number or LeetCode username"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <div class="actions">
+          <button
+            id="downloadCsvButton"
+            class="action-button secondary"
+            type="button"
+          >
+            CSV
+          </button>
+
+          <button
+            id="downloadPdfButton"
+            class="action-button secondary"
+            type="button"
+          >
+            PDF
+          </button>
+
+          <button
+            id="addProfileButton"
+            class="action-button primary admin-only"
+            type="button"
+            hidden
+          >
+            + Add Profile
+          </button>
+
+          <button
+            id="syncNowButton"
+            class="action-button secondary admin-only"
+            type="button"
+            hidden
+          >
+            ↻ Sync Now
+          </button>
+
+          <button
+            id="manageStudentsButton"
+            class="action-button secondary admin-only"
+            type="button"
+            hidden
+          >
+            Manage Students
+          </button>
+
+          <button
+            id="facultyAnalyticsButton"
+            class="action-button secondary admin-only"
+            type="button"
+            hidden
+          >
+            Faculty Analytics
+          </button>
+
+          <button
+            id="adminLogoutButton"
+            class="action-button secondary admin-only"
+            type="button"
+            hidden
+          >
+            Logout
+          </button>
+        </div>
+      </section>
+
+      <section class="legend">
+        <div>
+          <span class="legend-rank">#</span>
+          <span id="rankLegendText">Section Rank</span>
+        </div>
+
+        <div id="accessNote" class="legend-note">
+          Public view · No login required
+        </div>
+      </section>
+
+      <section class="table-shell" id="printArea">
+        <div class="print-heading">
+          <h2 id="printTitle">ECE Leaderboard</h2>
+          <p id="printUpdatedAt"></p>
+        </div>
+
+        <div class="table-scroll">
+          <table id="studentTable">
+            <thead>
+              <tr id="tableHeaderRow">
+                <th>Rank</th>
+                <th class="overall-only" hidden>Section</th>
+                <th>Register Number</th>
+                <th>Student</th>
+                <th>LeetCode</th>
+                <th>30 Days</th>
+                <th>7 Days</th>
+                <th>Today</th>
+                <th>Total</th>
+                <th>Easy</th>
+                <th>Medium</th>
+                <th>Hard</th>
+                <th>Status</th>
+</tr>
+            </thead>
+
+            <tbody id="studentTableBody">
+              <tr>
+                <td colspan="13" class="loading-row">
+                  Loading leaderboard...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <!-- =======================================================
+       ADMIN LOGIN
+       ======================================================= -->
+  <div id="adminLoginModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-close-admin-login></div>
+
+    <section
+      class="profile-modal-card admin-login-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="adminLoginTitle"
+    >
+      <div class="profile-modal-head">
+        <div>
+          <div class="eyebrow">ADMIN ACCESS</div>
+          <h2 id="adminLoginTitle">Administrator Login</h2>
+        </div>
+
+        <button id="closeAdminLogin" class="modal-close" type="button">×</button>
+      </div>
+
+      <form id="adminLoginForm">
+        <label class="form-label" for="adminEmail">Email</label>
+        <input id="adminEmail" class="form-input" type="email" required>
+
+        <label class="form-label" for="adminPassword">Password</label>
+        <div class="password-field">
+          <input id="adminPassword" class="form-input" type="password" required>
+
+          <button id="toggleAdminPassword" class="password-toggle" type="button">
+            Show
+          </button>
+        </div>
+
+        <p id="adminLoginMessage" class="form-message"></p>
+
+        <div class="modal-actions">
+          <button type="button" class="action-button secondary" data-close-admin-login>
+            Cancel
+          </button>
+
+          <button id="adminSignInButton" class="action-button primary" type="submit">
+            Login
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       ADD / EDIT PROFILE
+       ======================================================= -->
+  <div id="profileModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-close-profile></div>
+
+    <section class="profile-modal-card" role="dialog" aria-modal="true">
+      <div class="profile-modal-head">
+        <div>
+          <div class="eyebrow">ADMIN PROFILE MANAGEMENT</div>
+          <h2 id="profileModalTitle">Add LeetCode Profile</h2>
+        </div>
+
+        <button id="closeProfileModal" class="modal-close" type="button">×</button>
+      </div>
+
+      <form id="profileForm">
+        <input id="editingStudentId" type="hidden">
+
+        <label class="form-label" for="registerNumber">Register Number</label>
+        <input id="registerNumber" class="form-input" required>
+
+        <label class="form-label" for="studentName">Student Name</label>
+        <input id="studentName" class="form-input" required>
+
+        <label class="form-label" for="leetcodeUsername">LeetCode Username</label>
+        <input
+          id="leetcodeUsername"
+          class="form-input"
+          required
+          pattern="[A-Za-z0-9_-]+"
+        >
+
+        <label class="form-label" for="studentSection">Section</label>
+        <select id="studentSection" class="form-input" required>
+          <option value="">Select Section</option>
+          <option value="ECE A">ECE A</option>
+          <option value="ECE B">ECE B</option>
+          <option value="ECE C">ECE C</option>
+          <option value="ECE D">ECE D</option>
+          <option value="ECE E">ECE E</option>
+          <option value="ECE F">ECE F</option>
+        </select>
+
+        <div class="generated-link" id="generatedLink">
+          https://leetcode.com/u/username/
+        </div>
+
+        <p id="formMessage" class="form-message"></p>
+
+        <div class="modal-actions">
+          <button type="button" class="action-button secondary" data-close-profile>
+            Cancel
+          </button>
+
+          <button id="saveProfileButton" type="submit" class="action-button primary">
+            Add User
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       MANAGE STUDENTS
+       ======================================================= -->
+  <div id="manageStudentsModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-close-manage></div>
+
+    <section class="profile-modal-card manage-modal-card" role="dialog" aria-modal="true">
+      <div class="profile-modal-head">
+        <div>
+          <div class="eyebrow">ADMIN</div>
+          <h2>Manage Students</h2>
+        </div>
+
+        <button id="closeManageStudents" class="modal-close" type="button">×</button>
+      </div>
+
+      <div class="manage-toolbar section-manage-toolbar">
+        <select id="manageSectionFilter" class="form-input">
+          <option value="ALL">All Sections</option>
+          <option value="ECE A">ECE A</option>
+          <option value="ECE B">ECE B</option>
+          <option value="ECE C">ECE C</option>
+          <option value="ECE D">ECE D</option>
+          <option value="ECE E">ECE E</option>
+          <option value="ECE F">ECE F</option>
+        </select>
+
+        <input
+          id="manageSearch"
+          class="form-input"
+          type="search"
+          placeholder="Search student..."
+        >
+
+        <span id="manageCount" class="manage-count">0 students</span>
+      </div>
+
+      <div class="manage-table-wrap">
+        <table class="manage-table">
+          <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Section Rank</th>
+                <th>Register Number</th>
+                <th>Student</th>
+                <th>LeetCode</th>
+                <th>30 Days</th>
+                <th>7 Days</th>
+                <th>Today</th>
+                <th>Total</th>
+                <th>Easy</th>
+                <th>Medium</th>
+                <th>Hard</th>
+                <th>Status</th>
+</tr>
+          </thead>
+
+          <tbody id="manageStudentsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       DELETE CONFIRMATION
+       ======================================================= -->
+  <div id="deleteModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-close-delete></div>
+
+    <section class="profile-modal-card delete-card" role="dialog" aria-modal="true">
+      <div class="profile-modal-head">
+        <div>
+          <div class="eyebrow danger-eyebrow">ADMIN ACTION</div>
+          <h2>Delete Profile?</h2>
+        </div>
+      </div>
+
+      <p id="deleteDescription" class="modal-help"></p>
+      <p id="deleteMessage" class="form-message"></p>
+
+      <div class="modal-actions">
+        <button id="cancelDeleteButton" class="action-button secondary" type="button">
+          Cancel
+        </button>
+
+        <button id="confirmDeleteButton" class="action-button danger-button" type="button">
+          Delete Profile
+        </button>
+      </div>
+    </section>
+  </div>
+
+
+
+
+
+  <!-- DAILY CHALLENGE PUBLIC VIEW -->
+  <div id="dailyChallengeModal" class="daily-challenge-modal" hidden>
+    <div class="daily-challenge-backdrop" data-close-daily-challenge></div>
+    <section class="daily-challenge-panel" role="dialog" aria-modal="true">
+      <div class="daily-challenge-toolbar">
+        <div>
+          <span class="challenge-kicker">PROBLEM OF THE DAY</span>
+          <h2>🎯 Daily Challenge</h2>
+          <p>Complete the assigned problem on the same day to build your streak.</p>
+        </div>
+        <button id="closeDailyChallengeButton" class="action-button secondary" type="button">Close</button>
+      </div>
+
+      <article id="todayChallengeHero" class="today-challenge-hero">
+        <div>
+          <span id="todayChallengeDifficulty" class="challenge-difficulty">—</span>
+          <h3 id="todayChallengeTitle">No challenge posted today</h3>
+          <p id="todayChallengeDate">—</p>
+        </div>
+        <a id="todayChallengeLink" class="action-button primary" href="#" target="_blank" rel="noopener">Open Problem ↗</a>
+      </article>
+
+      <div class="challenge-kpi-grid">
+        <article><span>Completed</span><strong id="challengeCompletedCount">0</strong></article>
+        <article><span>Pending</span><strong id="challengePendingCount">0</strong></article>
+        <article><span>Completion</span><strong id="challengeCompletionRate">0%</strong></article>
+        <article><span>Total Students</span><strong id="challengeStudentCount">0</strong></article>
+      </div>
+
+      <article class="challenge-block">
+        <div class="challenge-block-head">
+          <div><span class="challenge-kicker">STREAK LEADERS</span><h3>🔥 Daily Challenge Leaderboard</h3></div>
+        </div>
+        <div class="challenge-table-wrap">
+          <table class="challenge-table">
+            <thead><tr><th>Rank</th><th>Student</th><th>Section</th><th>Total Completed</th><th>Current Streak</th><th>Longest Streak</th><th>Today</th></tr></thead>
+            <tbody id="challengeLeaderboardBody"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="challenge-block">
+        <div class="challenge-block-head">
+          <div><span class="challenge-kicker">TODAY</span><h3>Student Completion Status</h3></div>
+          <select id="challengeSectionFilter" class="form-input">
+            <option value="ALL">All Sections</option>
+            <option>ECE A</option><option>ECE B</option><option>ECE C</option>
+            <option>ECE D</option><option>ECE E</option><option>ECE F</option>
+          </select>
+        </div>
+        <div id="challengeStudentStatus" class="challenge-status-grid"></div>
+      </article>
+    </section>
+  </div>
+
+  <!-- ADMIN: POST DAILY CHALLENGE -->
+  <div id="postChallengeModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-close-post-challenge></div>
+    <section class="profile-modal-card">
+      <div class="modal-heading">
+        <div>
+          <span class="challenge-kicker">ADMIN</span>
+          <h2>Post Daily Challenge</h2>
+          <p>Post one LeetCode problem for a date. Re-posting the same date updates it.</p>
+        </div>
+      </div>
+
+      <form id="postChallengeForm">
+        <label class="form-label" for="challengeDateInput">Challenge Date</label>
+        <input id="challengeDateInput" class="form-input" type="date" required>
+
+        <label class="form-label" for="challengeNumberInput">LeetCode Problem Number</label>
+        <input id="challengeNumberInput" class="form-input" type="number" min="1" placeholder="1">
+
+        <label class="form-label" for="challengeTitleInput">Problem Title</label>
+        <input id="challengeTitleInput" class="form-input" type="text" placeholder="Two Sum" required>
+
+        <label class="form-label" for="challengeSlugInput">Problem Slug</label>
+        <input id="challengeSlugInput" class="form-input" type="text" placeholder="two-sum" required>
+
+        <label class="form-label" for="challengeUrlInput">LeetCode Problem URL</label>
+        <input id="challengeUrlInput" class="form-input" type="url" placeholder="https://leetcode.com/problems/two-sum/" required>
+
+        <label class="form-label" for="challengeDifficultyInput">Difficulty</label>
+        <select id="challengeDifficultyInput" class="form-input" required>
+          <option>Easy</option><option>Medium</option><option>Hard</option>
+        </select>
+
+        <p id="postChallengeMessage" class="form-message"></p>
+
+        <div class="modal-actions">
+          <button type="button" class="action-button secondary" data-close-post-challenge>Cancel</button>
+          <button type="submit" class="action-button primary">Post Challenge</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       PUBLIC CHAMPIONS VIEW
+       ======================================================= -->
+  <div id="championsModal" class="champions-modal" hidden>
+    <div class="champions-backdrop" data-close-champions></div>
+
+    <section
+      class="champions-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="championsTitle"
+    >
+      <div class="champions-toolbar">
+        <div>
+          <span class="champions-kicker">ECE HALL OF FAME</span>
+          <h2 id="championsTitle">🏆 Top Performance</h2>
+          <p>
+            Section champions and the top 5 students across the entire ECE department.
+          </p>
+        </div>
+
+        <button
+          id="closeChampionsButton"
+          class="action-button secondary"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+
+      <article class="champions-block">
+        <div class="champions-block-heading">
+          <div>
+            <span class="champions-kicker">SECTION RANKING</span>
+            <h3>ECE A–F Championship Rank</h3>
+          </div>
+
+          <span class="champions-rule">
+            30 Days → 7 Days → Active Students → Avg / Student
+          </span>
+        </div>
+
+        <div id="championsSectionRanking" class="champions-section-ranking"></div>
+      </article>
+
+      <article class="champions-block">
+        <div class="champions-block-heading">
+          <div>
+            <span class="champions-kicker">SECTION LEADERS</span>
+            <h3>Champions of ECE A–F</h3>
+          </div>
+
+          <span class="champions-rule">
+            30 Days → 7 Days → Total Solved
+          </span>
+        </div>
+
+        <div id="sectionChampionsGrid" class="section-champions-grid"></div>
+      </article>
+
+      <article class="champions-block">
+        <div class="champions-block-heading">
+          <div>
+            <span class="champions-kicker">DEPARTMENT LEADERS</span>
+            <h3>Top 5 Students · All Sections</h3>
+          </div>
+        </div>
+
+        <div id="overallTopFive" class="overall-top-five"></div>
+      </article>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       ADMIN FACULTY ANALYTICS DASHBOARD
+       ======================================================= -->
+  <div id="facultyAnalyticsModal" class="faculty-analytics-modal" hidden>
+    <div class="faculty-analytics-backdrop" data-close-faculty-analytics></div>
+
+    <section
+      class="faculty-analytics-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="facultyAnalyticsTitle"
+    >
+      <div class="faculty-analytics-toolbar">
+        <div>
+          <span class="analytics-kicker">ADMIN ANALYTICS</span>
+          <h2 id="facultyAnalyticsTitle">Faculty Analytics Dashboard</h2>
+          <p>Department and section-level LeetCode activity insights.</p>
+        </div>
+
+        <div class="faculty-download-actions">
+          <button
+            id="downloadFacultyExcel"
+            class="action-button secondary"
+            type="button"
+          >
+            Download Excel
+          </button>
+
+          <button
+            id="downloadFacultyPdf"
+            class="action-button secondary"
+            type="button"
+          >
+            Download PDF
+          </button>
+
+          <button
+            id="closeFacultyAnalytics"
+            class="action-button secondary"
+            type="button"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+      <div class="analytics-filter-row">
+        <label for="analyticsSectionFilter">View</label>
+
+        <select id="analyticsSectionFilter" class="form-input">
+          <option value="ALL">All Sections</option>
+          <option value="ECE A">ECE A</option>
+          <option value="ECE B">ECE B</option>
+          <option value="ECE C">ECE C</option>
+          <option value="ECE D">ECE D</option>
+          <option value="ECE E">ECE E</option>
+          <option value="ECE F">ECE F</option>
+        </select>
+
+        <span id="analyticsScopeLabel" class="analytics-scope-label">
+          All Sections
+        </span>
+      </div>
+
+      <div class="analytics-kpi-grid">
+        <article class="analytics-kpi-card">
+          <span>Total Students</span>
+          <strong id="analyticsTotalStudents">0</strong>
+          <small>Profiles in selected scope</small>
+        </article>
+
+        <article class="analytics-kpi-card">
+          <span>Active Today</span>
+          <strong id="analyticsActiveToday">0</strong>
+          <small>Solved at least one today</small>
+        </article>
+
+        <article class="analytics-kpi-card">
+          <span>Active 7 Days</span>
+          <strong id="analyticsActive7Days">0</strong>
+          <small>Recent weekly activity</small>
+        </article>
+
+        <article class="analytics-kpi-card">
+          <span>Inactive 7 Days</span>
+          <strong id="analyticsInactive7Days">0</strong>
+          <small>No activity in last 7 days</small>
+        </article>
+
+        <article class="analytics-kpi-card">
+          <span>30-Day Solves</span>
+          <strong id="analytics30DaySolves">0</strong>
+          <small>Total recent problems</small>
+        </article>
+
+        <article class="analytics-kpi-card">
+          <span>Avg / Student</span>
+          <strong id="analyticsAverage30">0.0</strong>
+          <small>30-day average</small>
+        </article>
+
+        <article class="analytics-kpi-card challenge-analytics-kpi">
+          <span>Today's Challenge</span>
+          <strong id="analyticsChallengeTodayRate">0%</strong>
+          <small id="analyticsChallengeTodayCount">0 / 0 completed</small>
+        </article>
+
+        <article class="analytics-kpi-card challenge-analytics-kpi">
+          <span>Students on Streak</span>
+          <strong id="analyticsChallengeActiveStreaks">0</strong>
+          <small>Current challenge streak &gt; 0</small>
+        </article>
+
+        <article class="analytics-kpi-card coding-analytics-kpi">
+          <span>Latest Test Attendance</span>
+          <strong id="analyticsCodingAttendance">0%</strong>
+          <small id="analyticsCodingAttendanceCount">0 / 0 attended</small>
+        </article>
+
+        <article class="analytics-kpi-card coding-analytics-kpi">
+          <span>Latest Test Pass Rate</span>
+          <strong id="analyticsCodingPassRate">0%</strong>
+          <small id="analyticsCodingPassCount">0 / 0 passed</small>
+        </article>
+
+        <article class="analytics-kpi-card coding-analytics-kpi">
+          <span>Latest Test Avg Score</span>
+          <strong id="analyticsCodingAverage">0%</strong>
+          <small>Selected faculty scope</small>
+        </article>
+
+        <article class="analytics-kpi-card coding-analytics-kpi">
+          <span>Test Violations</span>
+          <strong id="analyticsCodingViolations">0</strong>
+          <small>Latest test · selected scope</small>
+        </article>
+      </div>
+
+      <div class="analytics-grid-two">
+        <article class="analytics-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">SECTION COMPARISON</span>
+              <h3>30-Day Performance</h3>
+            </div>
+          </div>
+
+          <div id="analyticsSectionBars" class="analytics-bars"></div>
+        </article>
+
+        <article class="analytics-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">DIFFICULTY</span>
+              <h3>Problem Distribution</h3>
+            </div>
+          </div>
+
+          <div id="analyticsDifficultyBars" class="analytics-bars"></div>
+        </article>
+      </div>
+
+      <div class="analytics-grid-two">
+        <article class="analytics-card analytics-highlight-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">SELECTED SCOPE</span>
+              <h3>🏆 Top 10 Students</h3>
+              <p class="analytics-card-note">
+                Ranked by 30 Days → 7 Days → Total Solved
+              </p>
+            </div>
+          </div>
+
+          <div class="analytics-table-wrap">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Student</th>
+                  <th>Section</th>
+                  <th>30 Days</th>
+                  <th>7 Days</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="analyticsTopStudents"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="analytics-card analytics-attention-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">SELECTED SCOPE</span>
+              <h3>⚠️ Bottom 10 Students</h3>
+              <p class="analytics-card-note">
+                Lowest recent activity in the selected section / overall
+              </p>
+            </div>
+          </div>
+
+          <div class="analytics-table-wrap">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Student</th>
+                  <th>Section</th>
+                  <th>30 Days</th>
+                  <th>7 Days</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="analyticsBottomStudents"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+      <div class="analytics-grid-two">
+        <article class="analytics-card analytics-overall-best-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">OVERALL ECE</span>
+              <h3>🔥 Best · Last 7 Days</h3>
+              <p class="analytics-card-note">
+                Top 10 students across ECE A–F by 7-day solves
+              </p>
+            </div>
+          </div>
+
+          <div class="analytics-table-wrap">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Student</th>
+                  <th>Section</th>
+                  <th>7 Days</th>
+                  <th>30 Days</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="analyticsOverallBest7"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="analytics-card analytics-overall-best-card">
+          <div class="analytics-card-heading">
+            <div>
+              <span class="analytics-kicker">OVERALL ECE</span>
+              <h3>🏆 Best · Last 30 Days</h3>
+              <p class="analytics-card-note">
+                Top 10 students across ECE A–F by 30-day solves
+              </p>
+            </div>
+          </div>
+
+          <div class="analytics-table-wrap">
+            <table class="analytics-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Student</th>
+                  <th>Section</th>
+                  <th>30 Days</th>
+                  <th>7 Days</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="analyticsOverallBest30"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+
+
+      <article class="analytics-card analytics-section-table-card coding-test-analytics-card">
+        <div class="analytics-card-heading">
+          <div>
+            <span class="analytics-kicker">CODING TEST</span>
+            <h3>💻 Latest Test · Section Performance</h3>
+            <p id="analyticsCodingLatestTestName" class="analytics-card-note">No coding test data yet.</p>
+          </div>
+        </div>
+
+        <div class="analytics-table-wrap">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Students</th>
+                <th>Attended</th>
+                <th>Passed</th>
+                <th>Pass %</th>
+                <th>Avg Score</th>
+                <th>Violations</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsCodingSectionSummary"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="analytics-card analytics-section-table-card">
+        <div class="analytics-card-heading">
+          <div>
+            <span class="analytics-kicker">DAILY CHALLENGE</span>
+            <h3>🎯 Section Challenge Performance</h3>
+          </div>
+        </div>
+
+        <div class="analytics-table-wrap">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Today Completed</th>
+                <th>Today %</th>
+                <th>Students on Streak</th>
+                <th>Avg Total Completed</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsChallengeSectionSummary"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="analytics-card analytics-section-table-card">
+        <div class="analytics-card-heading">
+          <div>
+            <span class="analytics-kicker">SECTION SUMMARY</span>
+            <h3>ECE A–F Overview</h3>
+          </div>
+        </div>
+
+        <div class="analytics-table-wrap">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Students</th>
+                <th>Active Today</th>
+                <th>Active 7 Days</th>
+                <th>30-Day Solves</th>
+                <th>Avg / Student</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsSectionSummary"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!-- =======================================================
+       PUBLIC STUDENT PROGRESS PROFILE
+       ======================================================= -->
+  <div id="studentProfileModal" class="student-profile-modal" hidden>
+    <div class="student-profile-backdrop" data-close-student-profile></div>
+
+    <section
+      class="student-profile-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="studentProfileName"
+    >
+      <div class="student-profile-toolbar">
+        <button
+          id="closeStudentProfile"
+          class="profile-back-button"
+          type="button"
+        >
+          ← Back to Leaderboard
+        </button>
+
+        <a
+          id="profileLeetCodeLink"
+          class="action-button primary"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View LeetCode ↗
+        </a>
+      </div>
+
+      <div class="student-profile-hero">
+        <div class="student-avatar" id="studentAvatar">S</div>
+
+        <div class="student-profile-identity">
+          <div class="profile-section-line">
+            <span id="profileSection" class="section-pill">ECE</span>
+            <span id="profileStatus" class="profile-status-dot">Success</span>
+          </div>
+
+          <h2 id="studentProfileName">Student</h2>
+          <p id="profileRegisterNumber">Register Number</p>
+          <p id="profileUsername">@username</p>
+        </div>
+
+        <div class="profile-ranks">
+          <div class="profile-rank-card">
+            <span>Section Rank</span>
+            <strong id="profileSectionRank">#–</strong>
+          </div>
+
+          <div class="profile-rank-card">
+            <span>Overall Rank</span>
+            <strong id="profileOverallRank">#–</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-stat-grid">
+        <article class="profile-stat-card">
+          <span>Total Solved</span>
+          <strong id="profileTotalSolved">0</strong>
+        </article>
+
+        <article class="profile-stat-card">
+          <span>Last 30 Days</span>
+          <strong id="profile30Days">0</strong>
+        </article>
+
+        <article class="profile-stat-card">
+          <span>Last 7 Days</span>
+          <strong id="profile7Days">0</strong>
+        </article>
+
+        <article class="profile-stat-card">
+          <span>Today</span>
+          <strong id="profileToday">0</strong>
+        </article>
+      </div>
+
+      <div class="profile-dashboard-grid">
+        <article class="profile-chart-card profile-progress-card">
+          <div class="profile-card-heading">
+            <div>
+              <span class="profile-kicker">PROGRESS</span>
+              <h3>Problems Solved Over Time</h3>
+            </div>
+            <span id="profileHistoryRange" class="profile-chart-note"></span>
+          </div>
+
+          <div id="profileProgressChart" class="profile-line-chart"></div>
+        </article>
+
+        <article class="profile-chart-card">
+          <div class="profile-card-heading">
+            <div>
+              <span class="profile-kicker">DIFFICULTY</span>
+              <h3>Problem Breakdown</h3>
+            </div>
+          </div>
+
+          <div id="profileDifficultyChart" class="difficulty-chart"></div>
+        </article>
+      </div>
+
+      <article class="profile-chart-card">
+        <div class="profile-card-heading">
+          <div>
+            <span class="profile-kicker">CONSISTENCY</span>
+            <h3>Daily Activity</h3>
+          </div>
+
+          <span class="profile-chart-note">Recent completed days</span>
+        </div>
+
+        <div id="profileDailyActivity" class="daily-activity-chart"></div>
+      </article>
+
+
+      <article class="profile-chart-card profile-challenge-card">
+        <div class="profile-card-heading">
+          <div>
+            <span class="profile-kicker">DAILY CHALLENGE</span>
+            <h3>🎯 Challenge Performance</h3>
+          </div>
+
+          <span id="profileChallengeTodayBadge" class="profile-challenge-today">
+            Today: —
+          </span>
+        </div>
+
+        <div class="profile-challenge-stats">
+          <div>
+            <span>Total Completed</span>
+            <strong id="profileChallengeCompleted">0</strong>
+          </div>
+
+          <div>
+            <span>Current Streak</span>
+            <strong id="profileChallengeCurrentStreak">🔥 0</strong>
+          </div>
+
+          <div>
+            <span>Longest Streak</span>
+            <strong id="profileChallengeLongestStreak">🏆 0</strong>
+          </div>
+
+          <div>
+            <span>Completion Rate</span>
+            <strong id="profileChallengeRate">0%</strong>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="profile-chart-card profile-coding-test-card">
+        <div class="profile-card-heading">
+          <div>
+            <span class="profile-kicker">CODING TEST</span>
+            <h3>💻 Coding Test Performance</h3>
+          </div>
+          <span id="profileCodingLastResult" class="profile-challenge-today">No test result</span>
+        </div>
+
+        <div class="profile-coding-test-stats">
+          <div><span>Tests Attended</span><strong id="profileCodingAttended">0</strong></div>
+          <div><span>Tests Passed</span><strong id="profileCodingPassed">0</strong></div>
+          <div><span>Average Score</span><strong id="profileCodingAverage">0%</strong></div>
+          <div><span>Best Score</span><strong id="profileCodingBest">0%</strong></div>
+          <div><span>Current Test Streak</span><strong id="profileCodingStreak">🔥 0</strong></div>
+          <div><span>Test Cases Passed</span><strong id="profileCodingCases">0 / 0</strong></div>
+        </div>
+      </article>
+
+      <article class="profile-last-solved">
+        <div>
+          <span>Last Problem</span>
+          <strong id="profileLastProblem">–</strong>
+        </div>
+
+        <div>
+          <span>Last Solved</span>
+          <strong id="profileLastSolved">–</strong>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <footer>
+    ECE LeetCode Department Tracker · Supabase · GitHub Actions
+  </footer>
+
+
+  <!-- ======================================================
+       DAILY CODING TEST
+       ====================================================== -->
+  <div id="codingTestModal" class="coding-test-modal" hidden>
+    <div class="coding-test-backdrop"></div>
+    <section class="coding-test-shell" aria-label="Daily Coding Test">
+      <header class="coding-test-topbar">
+        <div>
+          <span class="coding-test-kicker">DAILY CODING TEST</span>
+          <h2 id="codingTestTitle">Coding Test</h2>
+        </div>
+        <div class="coding-test-timer-wrap">
+          <span>TIME LEFT</span>
+          <strong id="codingTestTimer">00:00:00</strong>
+        </div>
+      </header>
+
+      <div id="codingTestLobby" class="coding-test-lobby">
+        <div class="coding-test-lobby-card">
+          <h3 id="codingLobbyTitle">No active test</h3>
+          <p id="codingLobbyMeta">The next published coding test will appear here.</p>
+          <div class="coding-instructions">
+            <strong>Test rules</strong>
+            <ul>
+              <li>Java only. The compiler runs on the secure code-runner service.</li>
+              <li>The timer continues after refresh and is based on the saved expiry time.</li>
+              <li>Copy, paste, cut and right-click are blocked inside the test.</li>
+              <li>Tab switching and fullscreen exits are recorded as violations.</li>
+              <li>When time reaches zero, the latest saved code is submitted automatically.</li>
+            </ul>
+          </div>
+          <label class="coding-identity-label">
+            Register Number
+            <input id="codingRegisterNumber" class="form-input" autocomplete="off" placeholder="Enter your register number">
+          </label>
+          <div class="coding-lobby-actions">
+            <button id="closeCodingTestButton" class="action-button secondary" type="button">Close</button>
+            <button id="startCodingTestButton" class="action-button primary" type="button">Start Test</button>
+          </div>
+          <p id="codingLobbyMessage" class="form-message"></p>
+        </div>
+      </div>
+
+      <div id="codingTestWorkspace" class="coding-test-workspace" hidden>
+        <aside class="coding-problem-pane">
+          <div class="coding-question-nav">
+            <button id="codingPrevQuestion" class="action-button secondary" type="button">← Prev</button>
+            <span id="codingQuestionCounter">1 / 1</span>
+            <button id="codingNextQuestion" class="action-button secondary" type="button">Next →</button>
+          </div>
+          <h3 id="codingQuestionTitle">Question</h3>
+          <div class="coding-question-badges">
+            <span id="codingQuestionDifficulty">Easy</span>
+            <span id="codingQuestionMarks">0 Marks</span>
+          </div>
+          <div id="codingQuestionDescription" class="coding-question-description"></div>
+          <h4>Sample Input</h4>
+          <pre id="codingSampleInput"></pre>
+          <h4>Sample Output</h4>
+          <pre id="codingSampleOutput"></pre>
+        </aside>
+
+        <main class="coding-editor-pane">
+          <div class="coding-editor-toolbar">
+            <span>Java · Main.java</span>
+            <span id="codingViolationBadge">Violations: 0</span>
+          </div>
+          <textarea id="codingSourceEditor" class="coding-source-editor" spellcheck="false"></textarea>
+          <div class="coding-run-actions">
+            <button id="codingRunButton" class="action-button secondary" type="button">▶ Run Code</button>
+            <button id="codingRunTestsButton" class="action-button secondary" type="button">Run Sample Tests</button>
+            <button id="codingEndTestButton" class="action-button danger coding-end-test-button" type="button">End Test</button>
+          </div>
+          <section class="coding-console">
+            <div class="coding-console-tabs">
+              <strong>Compiler / Output</strong>
+              <span id="codingExecutionState">Ready</span>
+            </div>
+            <pre id="codingConsoleOutput">Press Run Code to compile and execute.</pre>
+            <div id="codingCaseResults" class="coding-case-results"></div>
+          </section>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======================================================
+       ADMIN CODING TEST MANAGER — STABLE SEQUENTIAL FLOW
+       ====================================================== -->
+  <div id="codingAdminModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop" data-coding-admin-close></div>
+
+    <section class="profile-modal-card coding-admin-card">
+      <header class="coding-admin-header">
+        <div>
+          <span class="coding-test-kicker">ADMIN</span>
+          <h2>Daily Coding Test Manager</h2>
+          <p>Create/select a test, add questions, then add test cases.</p>
+        </div>
+
+        <button
+          id="codingAdminCloseButton"
+          class="action-button secondary"
+          type="button"
+        >
+          Close
+        </button>
+      </header>
+
+      <div class="coding-admin-flow">
+        <span class="coding-flow-pill active">1 · Test</span>
+        <span>→</span>
+        <span class="coding-flow-pill">2 · Question</span>
+        <span>→</span>
+        <span class="coding-flow-pill">3 · Test Cases</span>
+      </div>
+
+      <!-- STEP 1 -->
+      <section class="coding-manager-section">
+        <div class="coding-manager-heading">
+          <div>
+            <span>STEP 1</span>
+            <h3>Create or Select a Test</h3>
+          </div>
+        </div>
+
+        <form id="codingTestAdminForm" class="coding-admin-form">
+          <div class="coding-admin-grid">
+            <label>
+              Test Title
+              <input
+                id="codingAdminTitle"
+                class="form-input"
+                required
+                placeholder="Daily Coding Test #1"
+              >
+            </label>
+
+            <label>
+              Duration (minutes)
+              <input
+                id="codingAdminDuration"
+                class="form-input"
+                type="number"
+                min="1"
+                value="30"
+                required
+              >
+            </label>
+
+            <label>
+              Start Date & Time
+              <input
+                id="codingAdminStartsAt"
+                class="form-input"
+                type="datetime-local"
+                required
+              >
+            </label>
+
+            <label>
+              End Date & Time
+              <input
+                id="codingAdminEndsAt"
+                class="form-input"
+                type="datetime-local"
+              >
+            </label>
+          </div>
+
+          <label>
+            Instructions
+            <textarea
+              id="codingAdminInstructions"
+              class="form-input coding-admin-textarea"
+            >Solve all questions. Hidden test cases are used for final scoring.</textarea>
+          </label>
+
+          <div class="coding-admin-actions">
+            <button
+              id="codingCreateTestButton"
+              class="action-button primary"
+              type="submit"
+            >
+              Create Test & Continue
+            </button>
+          </div>
+
+          <p id="codingAdminMessage" class="form-message"></p>
+        </form>
+
+        <div class="coding-existing-box">
+          <div class="coding-existing-heading">
+            <h4>Existing Tests</h4>
+            <span>Select one to continue editing.</span>
+          </div>
+
+          <div id="codingAdminTestsList" class="coding-admin-list"></div>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section id="codingQuestionSection" class="coding-manager-section coding-section-locked">
+        <div class="coding-manager-heading">
+          <div>
+            <span>STEP 2</span>
+            <h3>Add Questions</h3>
+          </div>
+
+          <strong id="codingSelectedTestBadge">No test selected</strong>
+        </div>
+
+        <div id="codingQuestionLockMessage" class="coding-lock-message">
+          Create or select a test in Step 1.
+        </div>
+
+        <form id="codingQuestionAdminForm" class="coding-admin-form">
+          <input id="codingQuestionAdminTestId" type="hidden">
+
+          <div class="coding-admin-grid">
+            <label>
+              Question Title
+              <input
+                id="codingAdminQuestionTitle"
+                class="form-input"
+                required
+                placeholder="Add Two Numbers"
+              >
+            </label>
+
+            <label>
+              Difficulty
+              <select id="codingAdminDifficulty" class="form-input">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+              </select>
+            </label>
+
+            <label>
+              Marks
+              <input
+                id="codingAdminMarks"
+                class="form-input"
+                type="number"
+                min="1"
+                value="20"
+                required
+              >
+            </label>
+
+            <label>
+              Time Limit (ms)
+              <input
+                id="codingAdminTimeLimit"
+                class="form-input"
+                type="number"
+                min="500"
+                value="3000"
+                required
+              >
+            </label>
+          </div>
+
+          <label>
+            Problem Description
+            <textarea
+              id="codingAdminDescription"
+              class="form-input coding-admin-textarea"
+              required
+              placeholder="Write the complete problem statement..."
+            ></textarea>
+          </label>
+
+          <label>
+            Starter Java Code
+            <textarea
+              id="codingAdminStarterCode"
+              class="form-input coding-code-input"
+            >import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+    }
+}</textarea>
+          </label>
+
+          <div class="coding-admin-grid">
+            <label>
+              Sample Input
+              <textarea
+                id="codingAdminSampleInput"
+                class="form-input coding-admin-textarea"
+                placeholder="2 3"
+              ></textarea>
+            </label>
+
+            <label>
+              Sample Output
+              <textarea
+                id="codingAdminSampleOutput"
+                class="form-input coding-admin-textarea"
+                placeholder="5"
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="coding-admin-actions">
+            <button
+              class="action-button primary"
+              type="submit"
+            >
+              Add Question & Continue
+            </button>
+          </div>
+
+          <p id="codingQuestionAdminMessage" class="form-message"></p>
+        </form>
+
+        <div class="coding-existing-box">
+          <div class="coding-existing-heading">
+            <h4>Questions in Selected Test</h4>
+            <span>Select a question to add/edit its test cases.</span>
+          </div>
+
+          <div id="codingAdminQuestionsList" class="coding-admin-list"></div>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section id="codingCaseSection" class="coding-manager-section coding-section-locked">
+        <div class="coding-manager-heading">
+          <div>
+            <span>STEP 3</span>
+            <h3>Add Test Cases</h3>
+          </div>
+
+          <strong id="codingSelectedQuestionBadge">No question selected</strong>
+        </div>
+
+        <div id="codingCaseLockMessage" class="coding-lock-message">
+          Add or select a question in Step 2.
+        </div>
+
+        <form id="codingCaseAdminForm" class="coding-admin-form">
+          <input id="codingCaseAdminQuestionId" type="hidden">
+
+          <div class="coding-admin-grid">
+            <label>
+              Input
+              <textarea
+                id="codingAdminCaseInput"
+                class="form-input coding-admin-textarea"
+                placeholder="2 3"
+              ></textarea>
+            </label>
+
+            <label>
+              Expected Output
+              <textarea
+                id="codingAdminCaseOutput"
+                class="form-input coding-admin-textarea"
+                required
+                placeholder="5"
+              ></textarea>
+            </label>
+
+            <label>
+              Marks
+              <input
+                id="codingAdminCaseMarks"
+                class="form-input"
+                type="number"
+                min="0"
+                value="5"
+              >
+            </label>
+
+            <label class="coding-checkbox">
+              <input id="codingAdminCaseHidden" type="checkbox" checked>
+              Hidden Test Case
+            </label>
+          </div>
+
+          <div class="coding-admin-actions coding-case-actions">
+            <button
+              class="action-button primary"
+              type="submit"
+            >
+              Add Test Case
+            </button>
+
+            <button
+              id="codingNewQuestionButton"
+              class="action-button secondary"
+              type="button"
+            >
+              + Add Another Question
+            </button>
+          </div>
+
+          <p id="codingCaseAdminMessage" class="form-message"></p>
+        </form>
+
+        <div class="coding-existing-box">
+          <div class="coding-existing-heading">
+            <h4>Test Cases for Selected Question</h4>
+            <span>Delete incorrect cases and add them again.</span>
+          </div>
+
+          <div id="codingAdminCasesList" class="coding-admin-list"></div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+
+  <!-- ======================================================
+       CODING TEST RESULT
+       ====================================================== -->
+  <div id="codingResultModal" class="profile-modal" hidden>
+    <div class="profile-modal-backdrop"></div>
+    <section class="coding-result-card">
+      <div id="codingResultIcon" class="coding-result-icon">🎉</div>
+      <span class="coding-test-kicker">DAILY CODING TEST</span>
+      <h2 id="codingResultTitle">Congratulations!</h2>
+      <p id="codingResultMessage">Your test has been submitted successfully.</p>
+
+      <div class="coding-final-status-box">
+        <span>FINAL RESULT</span>
+        <strong id="codingResultStatus">Checking...</strong>
+        <small id="codingResultCases">0 / 0 test cases passed</small>
+      </div>
+
+      <p id="codingResultRedirect" class="coding-result-redirect">Returning to the leaderboard...</p>
+
+      <button id="codingResultHomeButton" class="action-button primary" type="button">
+        Back to Leaderboard
+      </button>
+    </section>
+  </div>
+
+  <!-- Scripts MUST stay at the end so Coding Test buttons/forms exist before JS binds events -->
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

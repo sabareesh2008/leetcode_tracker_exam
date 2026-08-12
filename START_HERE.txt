@@ -1,0 +1,20 @@
+START HERE
+==========
+
+You no longer need to edit students.csv or Students.xlsx manually.
+
+1) Create Supabase project.
+2) Run supabase_setup.sql in Supabase SQL Editor.
+3) Put Project URL + anon key in config.js.
+4) In GitHub Actions secrets add:
+   SUPABASE_URL
+   SUPABASE_SERVICE_ROLE_KEY
+5) Push this whole folder to GitHub.
+6) Settings -> Actions -> General -> Read and write permissions.
+7) Actions -> Update LeetCode Leaderboard -> Run workflow.
+8) Settings -> Pages -> main -> /(root).
+9) Open deployed page -> + Add Profile.
+
+New profile -> Supabase immediately -> Pending on page -> Python/GitHub Action within ~5 min -> Excel/CSV + LeetCode stats update.
+
+Read README.md for exact steps.

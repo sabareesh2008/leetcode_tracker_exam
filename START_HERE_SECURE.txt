@@ -1,0 +1,33 @@
+SECURE VERSION - DO THIS NEXT
+
+1. Open config.js.
+   Copy your CURRENT working Supabase Project URL + Publishable key into it.
+
+2. In Supabase -> SQL Editor -> New query:
+   paste the entire admin_crud_trigger_upgrade.sql and Run it once.
+   This makes Add + Edit + Delete all trigger the cloud LeetCode refresh.
+
+3. Local test:
+   python -m http.server 8000
+   Open http://localhost:8000
+
+4. Test PUBLIC login:
+   - leaderboard visible
+   - no Add/Edit/Delete
+
+5. Logout and test ADMIN login:
+   - Add Profile visible
+   - Edit and Delete visible
+
+6. Test Add / Edit / Delete.
+   Each change should automatically trigger GitHub Actions through super-action.
+
+7. Push the new frontend files to GitHub:
+   git pull --rebase origin main
+   git add index.html style.css script.js config.js
+   git commit -m "Add secure admin and public login"
+   git push origin main
+
+8. Refresh GitHub Pages after deployment.
+
+Read README_SECURE.md for details and the GitHub Pages static-file security limitation.

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ece-java-runner
+    runtime: docker
+    dockerContext: ./code-runner
+    dockerfilePath: ./code-runner/Dockerfile
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false

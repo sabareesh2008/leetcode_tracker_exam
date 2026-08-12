@@ -1,0 +1,133 @@
+ECE LEETCODE + DAILY CODING TEST — FULL INTEGRATED VERSION
+
+CORE INTEGRATION
+- Existing ECE A-F / Overall leaderboard retained
+- Main student table repaired and aligned
+- Register-number order retained for display
+- Daily Challenge retained
+- Student Profiles retained
+- Champions / Top Performance retained
+- Faculty Analytics retained
+- Excel/PDF downloads retained
+- Admin Student Management retained
+- Daily Coding Test fully integrated
+
+DAILY CODING TEST
+- Any register number already stored in Supabase students can enter
+- Java 21 compiler health is checked when the exam starts
+- Timer persists from saved expires_at
+- Run Code
+- Compiler Error
+- Runtime Error
+- Time Limit Exceeded
+- Sample tests
+- Server-side hidden tests
+- Automatic scoring
+- Auto-submit at time expiry
+- Copy/paste/cut/right-click blocking
+- Tab/fullscreen violation logs
+- Delete Test / Question / Test Case
+- Publish / Close Test
+
+SUCCESSFUL SUBMISSION
+If ALL final test cases pass:
+- Congratulations screen appears
+- Score, passed cases, time taken, violations shown
+- Data is saved in coding_attempts
+- Coding analytics refresh immediately
+- Student automatically returns to the leaderboard
+
+CODING DATA DISPLAYED
+Section cards:
+- Latest test passed / total students
+
+Student Profile:
+- Tests attended
+- Tests passed
+- Average score
+- Best score
+- Current test streak
+- Test cases passed
+- Last result
+
+Faculty Analytics:
+- Latest test attendance %
+- Latest test pass %
+- Latest test average score
+- Latest test violations
+- ECE A-F coding-test performance table
+
+STEP 1 — REPLACE / USE THIS PROJECT VERSION
+Use the full ZIP as the integrated version.
+
+STEP 2 — SUPABASE
+Run:
+coding_test_full_integration.sql
+
+STEP 3 — LOCAL JAVA RUNNER
+Copy:
+.env.runner.example
+to:
+.env.runner
+
+Fill SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, ALLOWED_ORIGINS.
+
+Run from project root:
+powershell -ExecutionPolicy Bypass -File .\start-runner.ps1
+
+Expected health:
+{
+  "ok": true,
+  "jdk": "21",
+  "hidden_judge_ready": true
+}
+
+STEP 4 — FRONTEND
+Use VS Code Live Server.
+Do NOT open index.html using file://.
+
+Local config.js:
+CODE_RUNNER_URL: "http://localhost:8080",
+
+STEP 5 — ADMIN TEST
+Admin -> Manage Coding Tests
+1. Create / Select Test
+2. Add Question
+3. Add Test Cases
+4. Add another question if needed
+5. Publish
+
+STEP 6 — STUDENT TEST
+Daily Coding Test
+-> enter any real register number in students table
+-> start test
+-> compiler readiness check runs
+-> code
+-> sample tests
+-> submit
+
+STEP 7 — LIVE JAVA RUNNER
+render.yaml is included for a Git-linked Docker deployment.
+Configure these backend secrets on the host:
+SUPABASE_URL
+SUPABASE_SERVICE_ROLE_KEY
+ALLOWED_ORIGINS
+
+Then set config.js CODE_RUNNER_URL to the HTTPS runner URL.
+
+STEP 8 — GIT
+push-live.ps1 is included.
+It commits and pushes the integrated project.
+
+SECURITY
+Never place SUPABASE_SERVICE_ROLE_KEY in config.js or GitHub Pages.
+.env.runner is ignored by git.
+
+VALIDATION COMPLETED
+- JavaScript syntax: PASSED
+- Python runner syntax: PASSED
+- Actual Java 21 compile/judge: PASSED
+- 2/2 test cases: PASSED
+- Score test: 10/10
+- Main leaderboard: 13 headers verified
+- Required integrated analytics/result elements verified

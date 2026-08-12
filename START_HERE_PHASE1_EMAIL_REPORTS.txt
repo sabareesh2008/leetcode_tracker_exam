@@ -1,0 +1,195 @@
+PHASE 1 — AUTOMATIC DAILY + WEEKLY EMAIL REPORTS
+=====================================================
+
+RECIPIENT TEST EMAIL
+--------------------
+sabareeshkarikalan2008@gmail.com
+
+MULTIPLE RECIPIENTS
+-------------------
+Use one GitHub Secret named REPORT_TO_EMAILS.
+
+Example:
+sabareeshkarikalan2008@gmail.com,faculty1@example.com,hod@example.edu
+
+You may separate addresses with commas, semicolons, or new lines.
+Duplicates are removed automatically.
+
+Resend accepts up to 50 recipients in one email request.
+This project automatically splits larger recipient lists into groups of 50,
+so the code can handle more than 50 configured recipient addresses.
+
+WHAT THE DAILY EMAIL CONTAINS
+-----------------------------
+LeetCode:
+- Total students
+- Active today
+- Problems solved today
+- Inactive today
+- Invalid/error profiles
+- Activity rate
+- Top 10 solved today
+- ECE A-F section summary
+
+Daily Challenge:
+- Today's challenge name
+- Completed
+- Pending
+- Completion percentage
+
+Daily Coding Test:
+- Tests conducted today
+- Attended
+- Not attended (when one test is conducted)
+- Passed
+- Failed
+- Pass rate
+
+WHAT THE WEEKLY EMAIL CONTAINS
+------------------------------
+LeetCode:
+- Active last 7 days
+- Total problems solved last 7 days
+- Weekly activity rate
+- Average problems per student
+- Top 10 last 7 days
+- Bottom 10 last 7 days
+- Section performance
+
+Daily Challenge:
+- Challenges posted in the last 7 days
+- Total challenge completions
+- Weekly completion percentage
+
+Coding Test:
+- Tests conducted in the last 7 days
+- Unique students attended
+- Passed / failed attempts
+- Pass rate
+- Violation count
+
+FILES ADDED
+-----------
+report_generator.py
+.github/workflows/daily-report.yml
+.github/workflows/weekly-report.yml
+reports/.gitkeep
+test-daily-report.ps1
+test-weekly-report.ps1
+
+AUTOMATIC SCHEDULE
+------------------
+Daily:
+7:00 PM Asia/Kolkata
+
+Weekly:
+Sunday 7:30 PM Asia/Kolkata
+
+Both workflows also support:
+Actions -> Run workflow
+for manual testing.
+
+GITHUB SECRETS REQUIRED
+-----------------------
+Repository -> Settings -> Secrets and variables -> Actions
+
+Add:
+SUPABASE_URL
+SUPABASE_SERVICE_ROLE_KEY
+RESEND_API_KEY
+REPORT_FROM_EMAIL
+REPORT_TO_EMAILS
+
+Optional:
+REPORT_REPLY_TO
+
+For the first recipient:
+REPORT_TO_EMAILS =
+sabareeshkarikalan2008@gmail.com
+
+IMPORTANT RESEND SETUP
+----------------------
+1. Create a Resend account.
+2. Create a Resend API key.
+3. For real production sending, verify a domain you own and use a From address
+   on that verified domain.
+4. For an initial Resend test, onboarding@resend.dev has sandbox restrictions.
+   If Resend rejects the recipient, verify your own domain first.
+
+Example production REPORT_FROM_EMAIL:
+ECE LeetCode Reports <reports@updates.yourdomain.com>
+
+SECURITY
+--------
+Never put:
+- RESEND_API_KEY
+- SUPABASE_SERVICE_ROLE_KEY
+
+inside:
+- config.js
+- script.js
+- public HTML
+- committed .env files
+
+Use GitHub Actions Secrets only.
+
+LOCAL PREVIEW BEFORE EMAIL
+--------------------------
+Set only Supabase variables in your current PowerShell session:
+
+$env:SUPABASE_URL="YOUR_SUPABASE_URL"
+$env:SUPABASE_SERVICE_ROLE_KEY="YOUR_NEW_SECRET"
+
+Then:
+powershell -ExecutionPolicy Bypass -File .\test-daily-report.ps1
+
+or:
+powershell -ExecutionPolicy Bypass -File .\test-weekly-report.ps1
+
+Open:
+reports\latest_daily_report.html
+or
+reports\latest_weekly_report.html
+
+LOCAL REAL EMAIL TEST
+---------------------
+Also set:
+
+$env:RESEND_API_KEY="YOUR_RESEND_API_KEY"
+$env:REPORT_FROM_EMAIL="ECE LeetCode Reports <YOUR_VERIFIED_FROM_ADDRESS>"
+$env:REPORT_TO_EMAILS="sabareeshkarikalan2008@gmail.com"
+
+Then:
+python report_generator.py --mode daily
+
+If successful, the terminal prints the Resend message ID.
+
+GITHUB MANUAL TEST
+------------------
+After pushing:
+1. GitHub -> Repository -> Settings
+2. Secrets and variables -> Actions
+3. Add all required secrets.
+4. Actions -> Daily ECE Performance Report
+5. Run workflow
+6. Check sabareeshkarikalan2008@gmail.com
+
+If the Daily test succeeds:
+Actions -> Weekly ECE Performance Report -> Run workflow.
+
+AUTOMATIC REPORTING
+-------------------
+Once the workflows are on the default branch:
+- Daily email runs automatically at 7:00 PM IST.
+- Weekly email runs automatically Sunday at 7:30 PM IST.
+
+VALIDATION
+----------
+The packaged version has been checked for:
+- Python syntax
+- Recipient parsing
+- >50 recipient batching logic
+- Daily offline HTML generation
+- Weekly offline HTML generation
+- GitHub workflow YAML parsing
+- Existing tracker requirements compatibility
